@@ -27,6 +27,10 @@ public class Alumno {
         return email;
     }
 
+    public Set<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -44,5 +48,11 @@ public class Alumno {
             asignaturas.add(asignatura);
             asignatura.matricularAlumno(this);
         }
+    }
+
+    public int horasTotales(){
+        return asignaturas.stream()
+                .mapToInt(a -> a.getHorasSemanales())
+                .sum();
     }
 }
