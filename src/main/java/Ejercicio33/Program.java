@@ -13,33 +13,79 @@ public class Program {
         System.out.println("5.Listado de asignaturas en las que está matriculado un alumno y total de horas.");
         System.out.println("6.Salir");
 
-        int opcion = scan.nextInt();
-        switch (opcion){
-            case 1:
-                System.out.println("Nombre:");
-                String nombreAlumno = scan.next();
-                System.out.println("Apellido:");
-                String apellido = scan.next();
-                System.out.println("Email:");
-                String email = scan.next();
-                crearAlumno(nombreAlumno, apellido, email);
+        boolean trueOrFalse = true;
+        while(trueOrFalse){
+            int opcion = scan.nextInt();
+            switch (opcion){
+                case 1:
+                    System.out.println("Nombre:");
+                    String nombreAlumno = scan.next();
+                    System.out.println("Apellido:");
+                    String apellido = scan.next();
+                    System.out.println("Email:");
+                    String email = scan.nextLine();
+                    crearAlumno(nombreAlumno, apellido, email);
+                    break;
 
-            case 2:
-                System.out.println("Nombre:");
-                String nombreAsignatura = scan.next();
-                System.out.println("Horas semanales:");
-                int horasSemanales = scan.nextInt();
-                crearAsignatura(nombreAsignatura, horasSemanales);
+                case 2:
+                    System.out.println("Nombre:");
+                    String nombreAsignatura = scan.next();
+                    System.out.println("Horas semanales:");
+                    int horasSemanales = scan.nextInt();
+                    crearAsignatura(nombreAsignatura, horasSemanales);
+                    break;
 
-            case 3:
-                System.out.println("Alumno:");
-                Alumno alumno;
-                System.out.println("Asignatura");
-                Asignatura asignatura;
-                matricularAlumno(alumno, asignatura);
+                case 3:
+                    System.out.println("Alumno:");
+                    System.out.println("Nombre:");
+                    String nombre2 = scan.next();
+                    System.out.println("Apellido:");
+                    String apellido2 = scan.next();
+                    System.out.println("Email:");
+                    String email2 = scan.next();
+                    Alumno alumno = new Alumno(nombre2, apellido2, email2);
+                    System.out.println("Asignatura");
+                    System.out.println("Nombre:");
+                    String nombreAsig = scan.next();
+                    System.out.println("Horas Semanales:");
+                    int horasSem = scan.nextInt();
+                    Asignatura asignatura = new Asignatura(nombreAsig, horasSem);
+                    matricularAlumno(alumno, asignatura);
+                    break;
+
+                case 4:
+                    System.out.println("Asignatura:");
+                    System.out.println("Nombre:");
+                    String nombreAsig2 = scan.next();
+                    System.out.println("Horas Semanales:");
+                    int horasSem2 = scan.nextInt();
+                    Asignatura asignatura1 = new Asignatura(nombreAsig2, horasSem2);
+                    listadoMatriculados(asignatura1);
+                    break;
+
+                case 5:
+                    System.out.println("Alumno:");
+                    System.out.println("Nombre");
+                    String nombreA = scan.next();
+                    System.out.println("Apellido:");
+                    String apellidoA = scan.next();
+                    System.out.println("Email:");
+                    String emailA = scan.next();
+                    Alumno alumno1 = new Alumno(nombreA, apellidoA, emailA);
+                    asignaturasYHorasALumno(alumno1);
+                    break;
+
+                case 6:
+                    System.out.println("Salir");
+                    trueOrFalse = false;
+                    break;
+
+                default:
+                    System.out.println("El numero ingresado no está entre las opciones");
+                    break;
+            }
+
         }
-
-
     }
 
     public static Alumno crearAlumno(String nombre, String apellido, String email){
